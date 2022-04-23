@@ -1,0 +1,78 @@
+{% load cart_template_tags %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="{% url 'core:item_list' %}"><b>Lucky Cement Factory</b></a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+    {% if not request.user.is_authenticated %}
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/login/">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/signup/">Sign Up</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'core:career_page' %}">Career</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'core:about_us' %}">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'core:contact_us' %}">Contact Us</a>
+      </li>
+    </ul>
+    {% else %}
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+        <a class="nav-link" href="/">Home
+        </a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link waves-effect" href="/order_summary/">{{ request.user|cart_item_count }}
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/customer_profile/">{{request.user}}
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/accounts/password/change/">Reset Password
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/logout/">Logout</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="/requestrefund/">Request Refund</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'core:career_page' %}">Career</a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'core:about_us' %}">About Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'core:contact_us' %}">Contact Us</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
